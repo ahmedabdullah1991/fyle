@@ -10,13 +10,13 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 
 import {
-  Circle,
+  Squircle,
   HardDrive,
   Share2,
   Users,
   Smartphone,
   ShieldCheck,
-  Star,
+  GitCommitHorizontal,
 } from 'lucide-react'
 
 const features = [
@@ -69,25 +69,38 @@ const Page = () => {
       <header>
         <div className="w-full max-w-7xl flex flex-row justify-between items-center mx-auto px-4 py-2">
           <div className="flex flex-row gap-2">
-            <Circle className="!size-7" />
+            <Squircle className="!size-7" />
             <Label className="label-hide text-xl font-bold tracking-widest">
               FYLE
             </Label>
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              href={'https://github.com/ahmedabdullah1991/fyle'}
+              target={'_blank'}
+            >
+              <div className="flex flex-row">
+                <Button
+                  variant={'outline'}
+                  className={'rounded-none rounded-l-md'}
+                >
+                  Star the project
+                </Button>
+                <Button
+                  variant={'outline'}
+                  className={'rounded-none rounded-r-md'}
+                >
+                  <GitCommitHorizontal />
+                </Button>
+              </div>
+            </Link>
             <Link href={'/dashboard'}>
               <Button>DASHBOARD</Button>
             </Link>
           </div>
         </div>
       </header>
-      <main className="w-full max-w-7xl h-13 mx-auto px-4 py-2 flex justify-center border-border border-b">
-        <Label className="text-center">
-          Star the project on github
-          <Star className="size-5" strokeWidth={1} />
-        </Label>
-      </main>
       <section className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] max-w-7xl mx-auto gap-20 lg:gap-2 justify-items-center lg:justify-items-start items-center px-4 py-20 lg:py-40">
         <div className="w-full grid grid-cols-1 justify-items-start">
           <h1 className="scroll-m-20 text-left text-4xl tracking-tighter font-extrabold text-balance">

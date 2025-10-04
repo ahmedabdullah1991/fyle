@@ -28,7 +28,7 @@ import { NavSecondary } from './nav-secondary'
 import {
   Folder,
   ArrowLeft,
-  Circle,
+  Squircle,
   Download,
   PanelRightOpen,
   XIcon,
@@ -157,7 +157,7 @@ export function AppSidebar({
             >
               <div className="flex flex-row gap-2">
                 <Link href={'/'}>
-                  <Circle className="!size-7" />
+                  <Squircle className="!size-7" />
                 </Link>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <Label className="truncate font-medium">FYLE</Label>
