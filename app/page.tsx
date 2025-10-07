@@ -1,154 +1,135 @@
-'use server'
-
-import Image from 'next/image'
 import Link from 'next/link'
-import adminDashboardDesktop from '@/public/admin-dash-desktop.png'
-import adminDashboardMobile from '@/public/admin-dash-mobile.png'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
 
-import {
-  Squircle,
-  HardDrive,
-  Share2,
-  Users,
-  Smartphone,
-  ShieldCheck,
-  GitCommitHorizontal,
-} from 'lucide-react'
+import { Squircle, GitCommit, HardDrive, Share2, Shield } from 'lucide-react'
+
+import { Main } from './client'
+
+const Page = () => {
+  return (
+    <>
+      <Navbar />
+      <Main />
+      <CardSection />
+      <Footer />
+    </>
+  )
+}
+
+export default Page
+
+const Navbar = () => {
+  return (
+    <nav>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 border-l border-b border-r rounded-md">
+        <div className="flex items-center gap-3">
+          <Squircle size={32} />
+          <span className="text-xl font-semibold text-foreground hidden sm:block">
+            FYLE
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link href="https://github.com/ahmedabdullah1991/fyle">
+            <Button variant="outline">
+              <GitCommit />
+            </Button>
+          </Link>
+          <Link href="/dashboard">
+            <Button className="bg-blue-700 hover:bg-blue-600 text-white font-semibold">
+              DASHBOARD
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  )
+}
 
 const features = [
   {
     index: 1,
     icon: HardDrive,
     headline: 'Unlimited Storage',
-    tagline: 'Never run out of space.',
     description:
-      'Upload and organize all your files without limits, including documents, photos, and high-resolution videos.',
+      'Upload, organize documents, and files with no restrictions, with seamless data management.',
   },
   {
     index: 2,
     icon: Share2,
     headline: 'Secure Sharing',
-    tagline: 'Share with confidence.',
     description:
-      'Send files with secure links, full permission control, access levels, and expiration dates for safety.',
+      'Send files securely via links, controlling access and permissions for full privacy and safety.',
   },
   {
     index: 3,
-    icon: Users,
-    headline: 'Collaboration',
-    tagline: 'Work together, instantly.',
+    icon: Shield,
+    headline: 'Enterprise Security',
     description:
-      'Edit, comment, and collaborate on files with your team in real time without version confusion.',
-  },
-  {
-    index: 4,
-    icon: Smartphone,
-    headline: 'Cross-device access',
-    tagline: 'Your files, everywhere.',
-    description:
-      'Access and sync your files across desktop, mobile, and web. Work anytime, anywhere—even offline.',
-  },
-  {
-    index: 5,
-    icon: ShieldCheck,
-    headline: 'Enterprise security',
-    tagline: 'Protection you can trust.',
-    description:
-      'Encryption at rest and in transit with compliance-ready infrastructure ensures personal and business files remain safe.',
+      'Ensure encrypted storage, secure protocols, and compliance-ready infrastructure.',
   },
 ]
 
-const Page = () => {
+const CardSection = () => {
   return (
-    <>
-      <style>{`@media (max-width: 299px) {.label-hide {display: none}}`}</style>
-      <header>
-        <div className="w-full max-w-7xl flex flex-row justify-between items-center mx-auto px-4 py-2">
-          <div className="flex flex-row gap-2">
-            <Squircle className="!size-7" />
-            <Label className="label-hide text-xl font-bold tracking-widest">
-              FYLE
-            </Label>
+    <section>
+      <div className="mx-auto max-w-7xl px-4 2xl:px-0 mt-16 sm:mt-32">
+        <div className="flex flex-col gap-8">
+          <div className="max-w-md flex flex-col gap-2">
+            <p className="text-blue-700 font-bold">UPLOAD. ORGANIZE. ACCESS</p>
+            <p className="text-4xl font-bold">
+              Experience that grows with scale
+              <span className="text-blue-700">_</span>
+            </p>
+            <p className="text-muted-foreground">
+              FYLE is a modern file management web application built with
+              Next.js and powered by AWS. It enables users to create folders and
+              upload files.
+            </p>
           </div>
-
-          <div className="flex items-center gap-2">
-            <Link
-              href={'https://github.com/ahmedabdullah1991/fyle'}
-              target={'_blank'}
-            >
-              <div className="flex flex-row">
-                <Button
-                  variant={'outline'}
-                  className={'rounded-none rounded-l-md'}
-                >
-                  Star the project
-                </Button>
-                <Button
-                  variant={'outline'}
-                  className={'rounded-none rounded-r-md'}
-                >
-                  <GitCommitHorizontal />
-                </Button>
-              </div>
-            </Link>
-            <Link href={'/dashboard'}>
-              <Button>DASHBOARD</Button>
-            </Link>
-          </div>
-        </div>
-      </header>
-      <section className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] max-w-7xl mx-auto gap-20 lg:gap-2 justify-items-center lg:justify-items-start items-center px-4 py-20 lg:py-40">
-        <div className="w-full grid grid-cols-1 justify-items-start">
-          <h1 className="scroll-m-20 text-left text-4xl tracking-tighter font-extrabold text-balance">
-            Seamless File Storage
-          </h1>
-          <Label className="w-2/3 sm:w-1/2 lg:w-2/3 text-foreground/50 text-left">
-            Your all-in-one platform to store, share, and collaborate on
-            files—anytime, anywhere, on any device.
-          </Label>
-        </div>
-        <Image
-          src={adminDashboardDesktop}
-          alt="admin dashboard dasktop screenshot"
-          className="rounded-lg object-cover hidden lg:block"
-          quality={20}
-          placeholder="blur"
-        />
-        <Image
-          src={adminDashboardMobile}
-          alt="admin dashboard mobile screenshot"
-          className="rounded-lg object-cover block lg:hidden"
-          quality={20}
-          placeholder="blur"
-        />
-      </section>
-      <section className="w-full max-w-7xl mx-auto pb-20 lg:pb-40 px-4">
-        <Card className="p-0 bg-gradient-to-br from-foreground/20 to-transparent px">
-          <CardContent className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3">
             {features.map((value) => (
-              <Card key={value.index} className="bg-transparent shadow-none">
-                <CardContent className="flex flex-row gap-6">
-                  {<value.icon className="!size-20" />}
+              <Card key={value.index} className="bg-card/15 rounded-none py-16">
+                <CardContent>
                   <div>
-                    <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight text-balance">
-                      {value.headline}
-                    </h1>
-                    <Label className="text-muted-foreground">
-                      {value.description}
-                    </Label>
+                    <div className="flex flex-row gap-2">
+                      <value.icon className="text-blue-700" />
+                      <p className="text-xl font-semibold">{value.headline}</p>
+                    </div>
+                    <p className="text-muted-foreground">{value.description}</p>
                   </div>
                 </CardContent>
               </Card>
             ))}
-          </CardContent>
-        </Card>
-      </section>
-    </>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
-export default Page
+const Footer = () => {
+  return (
+    <footer>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 mt-16 sm:mt-32 border-t border-l border-r rounded-md">
+        <div className="flex items-center gap-3">
+          <Squircle size={32} />
+          <span className="text-xl font-semibold text-foreground hidden sm:block">
+            FYLE
+          </span>
+        </div>
+
+        <div className={'flex items-center gap-3'}>
+          <p className="font-bold">Star on Github</p>
+          <Link href="https://github.com/ahmedabdullah1991/fyle">
+            <Button variant="outline">
+              <GitCommit />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </footer>
+  )
+}
