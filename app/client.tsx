@@ -61,13 +61,13 @@ export const Main = () => {
         </div>
         <div>
           <Image
-            src={theme === 'dark' ? dashDesktop : dashDesktopLight}
+            src={theme === 'dark' || 'system' ? dashDesktop : dashDesktopLight}
             alt=""
             height={512}
             className="hidden sm:block"
           />
           <Image
-            src={theme === 'dark' ? dashMobile : dashMobileLight}
+            src={theme === 'dark' || 'system' ? dashMobile : dashMobileLight}
             alt=""
             className="block sm:hidden"
           />
